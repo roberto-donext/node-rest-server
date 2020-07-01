@@ -2,43 +2,35 @@ require('./config/config')
 
 
 const express = require('express');
-const app = express();
+const mongoose = require('mongoose');
 
-var bodyParser = require('body-parser');
+const app = express();
+const bodyParser = require('body-parser');
+
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
 
-app.get('/usuario', (req, res) => {
-    console.log('escuchando');
-    res.send({ success: true, data: 'get' })
-})
+app.use(require('./routes/usuario'));
+
+//user strider
+// password ZP7sHNLd6HSd5Cs
+
+//mongodb+srv://strider:ZP7sHNLd6HSd5Cs@cluster0.yk4s6.mongodb.net/cafe
 
 
-app.post('/usuario/:id', (req, res) => {
+mongoose.connect(process.env.URLDB, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, (err) => {
 
-
-    let body = req.body;
-
-    if (body.nombre === undefined) {
-
-        return res.status(400).send({ success: false, mensaje: 'nombre es necesario' })
+    if (err) {
+        console.log('error');
+        throw err;
     }
 
-    res.send({ body })
-})
+    console.log('connected to ddbb');
 
-app.put('/usuario', (req, res) => {
-    console.log('escuchando');
-    res.send({ success: true, data: 'put' })
-})
 
-app.delete('/usuario', (req, res) => {
-    console.log('escuchando');
-    res.send({ success: true, data: 'delete' })
-})
-
+});
 
 
 
