@@ -12,7 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
 
-app.use(require('./routes/usuario'));
+//configuración global de rutas
+app.use(require('./routes/index'));
+
 
 //user strider
 // password ZP7sHNLd6HSd5Cs
