@@ -39,3 +39,11 @@ process.env.SEED = process.env.SEED || 'esteEsElSeedDesarrollo';
 
 
 process.env.URLDB = urlDb
+
+
+
+// ==================
+// Client Google Id
+// ==================
+
+process.env.CLIENT_ID = process.env.CLIENT_ID || '551649410054-og0b8cqe4l00d90aqaa77h3acpf5dq4p.apps.googleusercontent.com'
