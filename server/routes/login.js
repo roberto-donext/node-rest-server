@@ -47,7 +47,9 @@ app.post('/login', (req, res) => {
 
         let token = jwt.sign({
                 usuario: usuarioDB
-            }, process.env.SEED, { expiresIn: process.env.CADUCIDAD_TOKEN }) //60 x 60 es 60 segundos por 60 minutos si queremos que expire en 30 dias seria 60 * 60 * 24 * 30 que serían 30 dias por son 60 segundos x 60 minnutos x 24 horas x 30 dias
+            }, process.env.SEED, { expiresIn: Number(process.env.CADUCIDAD_TOKEN) }) //60 x 60 es 60 segundos por 60 minutos si queremos que expire en 30 dias seria 60 * 60 * 24 * 30 que serían 30 dias por son 60 segundos x 60 minnutos x 24 horas x 30 dias
+
+        console.log(`token ${token}`);
 
         res.json({
             ok: true,
